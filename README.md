@@ -155,7 +155,7 @@ This is a structured block editor, not a complete Overleaf-style rich-text edito
 
 ## Development
 
-Development files live in the hidden `.obsidian-latex-embed/` folder at the vault root so they do not clutter Obsidian's file explorer. The installed plugin remains in `.obsidian/plugins/latex-document-embed/`.
+Run `npm install && npm run build` to produce `main.js` and `assets/`, and `npm test` for the test suite.
 
 ```sh
 cd .obsidian-latex-embed
