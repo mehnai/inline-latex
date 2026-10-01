@@ -1,6 +1,6 @@
 {
-  "id": "latex-document-embed",
-  "name": "LaTeX Document Embed",
+  "id": "inline-latex",
+  "name": "Inline LaTeX",
   "version": "1.5.0",
   "minAppVersion": "1.5.0",
   "description": "Render LaTeX inline and as HTML documents in notes, with optional local PDF compilation for native packages.",

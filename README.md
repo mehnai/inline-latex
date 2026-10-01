@@ -1,4 +1,4 @@
-# LaTeX Document Embed for Obsidian
+# Inline LaTeX for Obsidian
 
 The notebook block syntax is `latex-cell` (or `latex-cell-file` for linked files). The old `latex-pdf` and `latex-pdf-file` names remain supported aliases, so existing notes need no migration. Shared setup continues to use `latex-preamble`.
 
@@ -6,7 +6,7 @@ Write LaTeX directly in notes as selectable HTML, embed `.tex` documents, or opt
 
 ## Install
 
-Copy `main.js`, `manifest.json`, `styles.css`, and the entire `assets/` folder into `<vault>/.obsidian/plugins/latex-document-embed/`, restart Obsidian, then enable **LaTeX Document Embed** under **Settings → Community plugins**. To build from source: `npm install && npm run build`.
+Download `main.js`, `manifest.json` and `styles.css` from the [latest release](https://github.com/mehnai/inline-latex/releases/latest) into `<vault>/.obsidian/plugins/inline-latex/`, restart Obsidian, then enable **Inline LaTeX** under **Settings → Community plugins**. To build from source: `npm install && npm run build`.
 
 ## Inline LaTeX without a PDF
 
@@ -86,7 +86,7 @@ Typing inside `\usepackage{...}` suggests common package names, including comma-
 
 ## Notebook-style LaTeX cells
 
-Use the command **LaTeX Document Embed: Insert LaTeX cell**, or write a `latex-cell` block. Each block is an independent cell in the note:
+Use the command **Inline LaTeX: Insert LaTeX cell**, or write a `latex-cell` block. Each block is an independent cell in the note:
 
 1. In Reading view or Live Preview, double-click its rendered output to edit source in place. Keyboard users can focus the cell and press Enter or F2.
 2. Type LaTeX with autocomplete. No modal opens.
@@ -155,15 +155,14 @@ This is a structured block editor, not a complete Overleaf-style rich-text edito
 
 ## Development
 
-Run `npm install && npm run build` to produce `main.js` and `assets/`, and `npm test` for the test suite.
+Run `npm install && npm run build` to produce `main.js` and `styles.css`, and `npm test` for the test suite.
 
 ```sh
-cd .obsidian-latex-embed
 npm ci
 npm test
 npm run build
 ```
 
-Source lives in `src/`. The build bundles JavaScript and copies the required styles/fonts into `assets/`; CodeMirror and Obsidian remain host-provided dependencies. Tests use a DOM fixture and run the real compiler when available. Override `LATEX_TEST_COMPILER` to specify another pdfLaTeX binary.
+Source lives in `src/`. The build bundles JavaScript and inlines the required styles and fonts into `main.js` and `styles.css`; CodeMirror and Obsidian remain host-provided dependencies. Tests use a DOM fixture and run the real compiler when available. Override `LATEX_TEST_COMPILER` to specify another pdfLaTeX binary.
 
 Relevant APIs: [Obsidian Markdown processing](https://github.com/obsidianmd/obsidian-developer-docs/blob/main/en/Plugins/Editor/Markdown%20post%20processing.md), [Tectonic compilation](https://tectonic-typesetting.github.io/book/latest/v2cli/compile.html).

@@ -34,7 +34,7 @@ function run(executable, args, cwd, signal, timeoutMs) {
     child.once('error', error => {
       cleanup();
       reject(new Error(error.code === 'ENOENT'
-        ? `LaTeX compiler not found: ${executable}. Set its full path in LaTeX Document Embed settings.` : error.message));
+        ? `LaTeX compiler not found: ${executable}. Set its full path in Inline LaTeX settings.` : error.message));
     });
     child.once('close', code => {
       cleanup();

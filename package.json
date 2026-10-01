@@ -1,5 +1,5 @@
 {
-  "name": "obsidian-latex-embed",
+  "name": "inline-latex",
   "version": "1.5.0",
   "private": true,
   "scripts": {
