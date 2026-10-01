@@ -1,7 +1,6 @@
 # Inline LaTeX for Obsidian
 
-The notebook block syntax is `latex-cell` (or `latex-cell-file` for linked files). The old `latex-pdf` and `latex-pdf-file` names remain supported aliases, so existing notes need no migration. Shared setup continues to use `latex-preamble`.
-
+The notebook block syntax is `latex-cell` (or `latex-cell-file` for linked files). Th
 Write LaTeX directly in notes as selectable HTML, embed `.tex` documents, or opt into a locally compiled PDF for native LaTeX packages. Desktop only.
 
 ## Install
