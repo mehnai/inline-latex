@@ -1,6 +1,6 @@
 const { parse, HtmlGenerator } = require('latex.js');
 
-function renderHtml(source, host, { inline = false, assetUrl = name => name } = {}) {
+function renderHtml(source, host, { inline = false, css = {} } = {}) {
   const generator = parse(source, { generator: new HtmlGenerator({ hyphenate: false }) });
   const fragment = generator.domFragment();
   // Never insert executable HTML from a document into the host application.
@@ -16,8 +16,9 @@ function renderHtml(source, host, { inline = false, assetUrl = name => name } = 
   for (const generated of styles.querySelectorAll('link[rel="stylesheet"]')) {
     const name = generated.getAttribute('href');
     if (!/^css\/(article|book|katex)\.css$/.test(name)) continue;
-    const link = document.createElement('link');
-    link.rel = 'stylesheet'; link.href = assetUrl(name); shadow.append(link);
+    if (!css[name]) continue;
+    const sheet = document.createElement('style');
+    sheet.textContent = css[name]; shadow.append(sheet);
   }
   // The generator supplies document-specific length variables as inline CSS.
   for (const style of styles.querySelectorAll('style')) shadow.append(style);

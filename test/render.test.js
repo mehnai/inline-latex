@@ -27,3 +27,10 @@ test('full document renders headings and lists', () => {
 test('unsupported native package fails explicitly', () => {
   assert.throws(() => renderHtml(String.raw`\documentclass{article}\usepackage{tikz}\begin{document}\begin{tikzpicture}\draw (0,0) -- (1,1);\end{tikzpicture}\end{document}`, document.createElement('div')));
 });
+
+test('bundled stylesheets are injected as style elements, not links', () => {
+  const host = document.createElement('div');
+  const root = renderHtml(String.raw`\textbf{Hi} $x$`, host, { css: { 'css/katex.css': '.katex{color:red}', 'css/article.css': '.body{margin:0}' } });
+  assert.equal(root.querySelectorAll('link').length, 0);
+  assert.ok([...root.querySelectorAll('style')].some(style => style.textContent.includes('.katex{color:red}')));
+});
